@@ -1,0 +1,21 @@
+# Environnement virtuel Python
+venv/
+.venv/
+
+# Fichiers compilés Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Variables d'environnement
+.env
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# IDE / Éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
