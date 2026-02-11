@@ -1,28 +1,143 @@
 # LOG3000-TP3 - Calculatrice Web
 
-Équipe : 27
+**Équipe : 27**
 
-## Objectif
+## Description
 
-Application web de calculatrice simple développée avec Flask permettant d'effectuer des opérations arithmétiques de base.
+Ce projet est une **calculatrice web** développée avec le micro-framework **Flask** (Python). L'application permet d'effectuer des opérations arithmétiques simples (addition, soustraction, multiplication, division) via une interface graphique intuitive rendue dans le navigateur.
 
-## Prérequis d'installation
+### Portée du projet
 
-- Python 3.x
-- pip
+- Évaluation d'expressions arithmétiques à **un seul opérateur** (ex. `12+7`, `3.5/2`).
+- Interface de type calculatrice avec grille de boutons (chiffres 0-9 et opérateurs `+`, `-`, `*`, `/`).
+- Construction de l'expression **côté client** (JavaScript), évaluation **côté serveur** (Python/Flask).
+- Résultat affiché dans le champ d'affichage après soumission du formulaire.
 
-## Instructions d'installation
+## Structure du projet
 
-1. Cloner le dépôt :
+```
+LOG3000-TP3/
+├── README.md              # Documentation principale (ce fichier)
+├── app.py                 # Point d'entrée Flask : routes, parsing et évaluation
+├── operators.py           # Fonctions arithmétiques (add, subtract, multiply, divide)
+├── templates/             # Templates HTML Jinja2
+│   ├── README.md          # Documentation du module templates
+│   └── index.html         # Interface de la calculatrice
+└── static/                # Fichiers statiques (CSS)
+    ├── README.md          # Documentation du module static
+    └── style.css          # Styles visuels de la calculatrice
+```
+
+| Fichier                | Responsabilité                                                                                                   |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `app.py`               | Définit la route `/`, parse l'expression soumise par l'utilisateur et retourne le résultat via le template HTML. |
+| `operators.py`         | Contient les quatre fonctions arithmétiques (`add`, `subtract`, `multiply`, `divide`) appelées par `app.py`.     |
+| `templates/index.html` | Page HTML avec le formulaire, la grille de boutons et le JS client pour construire l'expression.                 |
+| `static/style.css`     | Mise en page et styles visuels de la calculatrice (grille, couleurs, états interactifs).                         |
+
+## Prérequis
+
+- **Python 3.x** ([télécharger](https://www.python.org/downloads/))
+- **pip** (inclus avec Python 3.4+)
+- **Git** ([télécharger](https://git-scm.com/downloads))
+
+## Guide d'installation
+
+### 1. Cloner le dépôt
+
+```bash
+git clone https://github.com/ayoubm85/LOG3000-TP3.git
+cd LOG3000-TP3
+```
+
+### 2. Créer un environnement virtuel (recommandé)
+
+```bash
+python3 -m venv venv
+source venv/bin/activate        # macOS / Linux
+# venv\Scripts\activate         # Windows
+```
+
+### 3. Installer les dépendances
+
+```bash
+pip install flask
+```
+
+## Instructions d'utilisation
+
+### Lancer l'application
+
+```bash
+python app.py
+```
+
+Le serveur de développement Flask démarre sur `http://127.0.0.1:5000`.
+
+### Utiliser la calculatrice
+
+1. Ouvrir un navigateur et accéder à `http://127.0.0.1:5000`.
+2. Cliquer sur les **boutons chiffres** (0-9) pour composer le premier opérande.
+3. Cliquer sur un **bouton opérateur** (`+`, `-`, `*`, `/`) pour sélectionner l'opération.
+4. Cliquer sur les **boutons chiffres** pour composer le second opérande.
+5. Cliquer sur **`=`** pour soumettre l'expression et afficher le résultat.
+6. Cliquer sur **`C`** pour effacer l'affichage et recommencer.
+
+### Exemple
+
+Pour calculer `17 + 9` :
+
+- Cliquer sur `1`, `7`, `+`, `9`, puis `=`.
+- Le résultat `26.0` s'affiche dans le champ.
+
+## Tests
+
+> **Note :** Les tests unitaires seront ajoutés dans une étape ultérieure du projet.
+
+Une fois les tests en place, ils pourront être exécutés avec :
+
+```bash
+python -m pytest
+```
+
+Pour vérifier la couverture de code :
+
+```bash
+python -m pytest --cov=. --cov-report=term-missing
+```
+
+## Contribution
+
+### Flux de travail Git
+
+1. **Créer une branche** à partir de `main` pour chaque fonctionnalité ou correctif :
+
    ```bash
-   git clone https://github.com/ayoubm85/LOG3000-TP3.git
-   cd LOG3000-TP3
+   git checkout -b feature/nom-de-la-feature
    ```
-2. Installer les dépendances :
+
+2. **Développer** la fonctionnalité en effectuant des commits clairs et atomiques :
+
    ```bash
-   pip install flask
+   git add .
+   git commit -m "Ajouter la fonctionnalité X"
    ```
-3. Lancer l'application :
+
+3. **Pousser** la branche vers le dépôt distant :
+
    ```bash
-   python app.py
+   git push origin feature/nom-de-la-feature
    ```
+
+4. **Ouvrir une Pull Request (PR)** sur GitHub vers la branche `main`.
+
+5. **Revue de code** : un autre membre de l'équipe doit approuver la PR avant la fusion.
+
+6. **Fusionner** la PR une fois approuvée.
+
+### Conventions
+
+- **Branches** : utiliser le préfixe `feature/`, `fix/` ou `docs/` selon le type de modification.
+- **Commits** : messages en français, concis et au présent (ex. _« Ajouter la validation des entrées »_).
+- **Issues** : ouvrir une issue GitHub pour signaler un bug ou proposer une amélioration avant de commencer le travail.
+- **Documentation** : toute nouvelle fonction ou classe doit inclure un docstring décrivant son rôle, ses entrées et ses sorties.

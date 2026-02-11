@@ -1,17 +1,27 @@
+<!-- 
+  index.html – Template principal de la calculatrice Flask.
+  Utilise Jinja2 pour afficher le résultat renvoyé par le serveur.
+  Le formulaire envoie l'expression en POST, les boutons construisent
+  l'expression côté client via JavaScript avant la soumission.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Flask Calculator</title>
+<!-- Feuille de styles externe servie par Flask via le dossier static/ -->
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 <div class="calculator">
    <h1>Flask Calculator</h1>
+   <!-- Formulaire POST : l'expression est envoyée au serveur pour évaluation -->
    <form method="POST">
+      <!-- Champ d'affichage en lecture seule, pré-rempli avec le résultat précédent -->
       <input type="text" name="display" id="display" value="{{ result }}" readonly>
 
+      <!-- Grille de boutons organisée en 4 colonnes (chiffres + opérateurs) -->
       <div class="buttons">
          <button type="button" class="btn" onclick="appendToDisplay('1')">1</button>
          <button type="button" class="btn" onclick="appendToDisplay('2')">02</button>
@@ -30,6 +40,7 @@
 
          <button type="button" class="btn" onclick="appendToDisplay('0')">0</button>
          <button type="button" class="btn" onclick="clearDisplay()">C</button>
+         <!-- Le bouton « = » est de type submit pour déclencher l'envoi du formulaire -->
          <button type="submit" class="btn operator">=</button>
          <button type="button" class="btn operator" onclick="appendToDisplay('/')"></button>
       </div>
@@ -37,11 +48,20 @@
 </div>
 
 <script>
+   /**
+    * Ajoute un caractère (chiffre ou opérateur) à la fin du champ d'affichage.
+    * Appelée par chaque bouton de la calculatrice via onclick.
+    * @param {string} value - Le caractère à ajouter à l'expression.
+    */
    function appendToDisplay(value) {
       const display = document.getElementById('display');
       display.value += value;
    }
 
+   /**
+    * Efface le contenu du champ d'affichage.
+    * Permet à l'utilisateur de recommencer une nouvelle expression.
+    */
    function clearDisplay() {
       document.getElementById('display').value = '';
    }

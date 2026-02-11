@@ -1,3 +1,17 @@
+/*
+ * style.css – Styles de la calculatrice Flask.
+ *
+ * Organisation :
+ *   1. Mise en page globale (body)
+ *   2. Conteneur principal (.calculator)
+ *   3. Titre (h1)
+ *   4. Zone d'affichage (#display)
+ *   5. Grille de boutons (.buttons)
+ *   6. Boutons génériques (.btn) et opérateurs (.operator)
+ *   7. États interactifs (hover, active)
+ */
+
+/* Centrage vertical et horizontal de la calculatrice dans la fenêtre */
 body {
    font-family: Arial, sans-serif;
    background-color: #f0f0f0;
@@ -8,6 +22,7 @@ body {
    margin: 0;
 }
 
+/* Conteneur sombre de la calculatrice avec coins arrondis et ombre portée */
 .calculator {
    width: 100%;
    max-width: 600px;
@@ -18,12 +33,14 @@ body {
    text-align: center;
 }
 
+/* Titre blanc au-dessus de la zone d'affichage */
 h1 {
    color: #fff;
    margin-bottom: 20px;
    font-size: 36px;
 }
 
+/* Zone d'affichage : texte aligné à droite comme une vraie calculatrice */
 #display {
    width: 100%;
    height: 80px;
@@ -37,12 +54,14 @@ h1 {
    color: #fff;
 }
 
+/* Disposition des boutons en grille 4 colonnes avec espacement uniforme */
 .buttons {
    display: grid;
    grid-template-columns: repeat(4, 1fr);
    gap: 15px;
 }
 
+/* Style de base des boutons : fond gris, texte blanc, transition douce */
 .btn {
    width: 100%;
    padding: 30px;
@@ -55,10 +74,12 @@ h1 {
    transition: background-color 0.2s;
 }
 
+/* Retour visuel au survol pour indiquer l'interactivité */
 .btn:hover {
    background-color: #555;
 }
 
+/* Couleur orange distincte pour les boutons d'opérateurs (+, -, *, /, =) */
 .operator {
    background-color: #ff9500;
 }
@@ -67,6 +88,7 @@ h1 {
    background-color: #e68a00;
 }
 
+/* Retour visuel au clic (état pressed) – assombrissement supplémentaire */
 .btn:active {
    background-color: #444;
 }
