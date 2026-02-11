@@ -20,19 +20,16 @@ def add(a, b):
 
 
 def subtract(a, b):
-    """Soustrait le premier opérande du second.
-
-    Note : l'ordre est inversé (b - a) par rapport à la convention
-    habituelle afin de refléter la logique d'affichage de la calculatrice.
+    """Soustrait le second opérande du premier.
 
     Args:
-        a (float): L'opérande à soustraire.
-        b (float): L'opérande de départ.
+        a (float): Le premier opérande.
+        b (float): L'opérande à soustraire.
 
     Returns:
-        float: Le résultat de b - a.
+        float: Le résultat de a - b.
     """
-    return b - a
+    return a - b
 
 
 def multiply(a, b):
