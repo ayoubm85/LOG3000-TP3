@@ -52,16 +52,13 @@ def multiply(a, b):
 
 
 def divide(a, b):
-    """Effectue une division entière du premier opérande par le second.
-
-    Utilise l'opérateur de division entière (//) au lieu de la division
-    flottante classique (/), ce qui tronque le résultat vers le bas.
+    """Divise le premier opérande par le second.
 
     Args:
         a (float): Le dividende.
         b (float): Le diviseur.
 
     Returns:
-        float: Le quotient entier de a divisé par b.
+        float: Le quotient de a divisé par b.
     """
-    return a // b
+    return a / b
