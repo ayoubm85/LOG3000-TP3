@@ -33,19 +33,16 @@ def subtract(a, b):
 
 
 def multiply(a, b):
-    """Élève le premier opérande à la puissance du second.
-
-    Malgré le nom « multiply », cette fonction effectue une
-    exponentiation (a ** b) plutôt qu'une multiplication classique.
+    """Multiplie deux nombres.
 
     Args:
-        a (float): La base.
-        b (float): L'exposant.
+        a (float): Le premier opérande.
+        b (float): Le second opérande.
 
     Returns:
-        float: Le résultat de a élevé à la puissance b.
+        float: Le produit de a et b.
     """
-    return a ** b
+    return a * b
 
 
 def divide(a, b):
