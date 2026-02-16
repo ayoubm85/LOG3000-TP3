@@ -8,6 +8,7 @@ dans l'implémentation des opérations.
 
 import sys
 import os
+import pytest
 
 # Ajouter le répertoire racine du projet au path pour permettre l'import de operators
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
@@ -172,7 +173,7 @@ class TestDivide:
         Bug potentiel : retourne 3.0 si l'implémentation fait a // b
         """
         # Utilisation de pytest.approx pour la comparaison de flottants
-        assert divide(10, 3) == round(10 / 3, 10)
+        assert divide(10, 3) == pytest.approx(10 / 3)
 
     def test_divide_resultat_entier(self):
         """Vérifie la division quand le résultat est un entier exact.
