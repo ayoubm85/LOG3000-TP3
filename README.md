@@ -23,9 +23,14 @@ LOG3000-TP3/
 ├── templates/             # Templates HTML Jinja2
 │   ├── README.md          # Documentation du module templates
 │   └── index.html         # Interface de la calculatrice
-└── static/                # Fichiers statiques (CSS)
-    ├── README.md          # Documentation du module static
-    └── style.css          # Styles visuels de la calculatrice
+├── static/                # Fichiers statiques (CSS)
+│   ├── README.md          # Documentation du module static
+│   └── style.css          # Styles visuels de la calculatrice
+└── tests/                 # Tests unitaires pytest
+    ├── README.md          # Documentation du module tests
+    ├── __init__.py        # Initialisation du package
+    ├── test_operators.py  # Tests des fonctions arithmétiques
+    └── test_app.py        # Tests de la route Flask et de calculate()
 ```
 
 | Fichier                | Responsabilité                                                                                                   |
@@ -34,6 +39,7 @@ LOG3000-TP3/
 | `operators.py`         | Contient les quatre fonctions arithmétiques (`add`, `subtract`, `multiply`, `divide`) appelées par `app.py`.     |
 | `templates/index.html` | Page HTML avec le formulaire, la grille de boutons et le JS client pour construire l'expression.                 |
 | `static/style.css`     | Mise en page et styles visuels de la calculatrice (grille, couleurs, états interactifs).                         |
+| `tests/`               | Suite de tests unitaires pytest couvrant `operators.py` et `app.py` (34 tests, couverture 99 %).                 |
 
 ## Prérequis
 
@@ -61,7 +67,7 @@ source venv/bin/activate        # macOS / Linux
 ### 3. Installer les dépendances
 
 ```bash
-pip install flask
+pip install flask pytest pytest-cov
 ```
 
 ## Instructions d'utilisation
@@ -92,19 +98,21 @@ Pour calculer `17 + 9` :
 
 ## Tests
 
-> **Note :** Les tests unitaires seront ajoutés dans une étape ultérieure du projet.
+Les tests unitaires sont situés dans le répertoire `tests/` et couvrent les fonctions arithmétiques de `operators.py` ainsi que la route Flask dans `app.py`.
 
-Une fois les tests en place, ils pourront être exécutés avec :
-
-```bash
-python -m pytest
-```
-
-Pour vérifier la couverture de code :
+### Exécuter les tests
 
 ```bash
-python -m pytest --cov=. --cov-report=term-missing
+python -m pytest tests/ -v
 ```
+
+### Avec couverture de code
+
+```bash
+python -m pytest tests/ -v --cov=. --cov-report=term-missing
+```
+
+Résultat attendu : **34 tests passés, couverture à 99 %**.
 
 ## Contribution
 
